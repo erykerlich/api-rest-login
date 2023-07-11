@@ -19,13 +19,16 @@ public class Usuario implements Serializable {
     private Integer id;
 
     //Não pode ser vazio
-    @NotEmpty(message = "Compo NOME é obrigatório")
+
+
+
+    @NotEmpty(message = "Campo NOME é obrigatório")
     @Length(min = 3, max = 100, message = "O NOME deve ter entr 3 e 100 caracteres")
     private String nome;
-    @NotEmpty(message = "Compo LOGIN é obrigatório")
+    @NotEmpty(message = "Campo LOGIN é obrigatório")
     @Length(min = 3, max = 100, message = "O LOGIN deve ter entr 3 e 100 caracteres")
     private String login;
-    @NotEmpty(message = "Compo SENHA é obrigatório")
+    @NotEmpty(message = "Campo SENHA é obrigatório")
     @Length(min = 3, max = 100, message = "A SENHA deve ter entr 3 e 100 caracteres")
     private String senha;
 
