@@ -1,10 +1,12 @@
 package com.eryk.myapi.services;
 
 import com.eryk.myapi.domain.Usuario;
+import com.eryk.myapi.exceptions.ObejectNotFoundException;
 import com.eryk.myapi.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,8 +19,23 @@ public class UsuarioService {
     public Usuario findById(Integer id){
         Optional<Usuario> obj = repository.findById(id);
         //RETORNA O OBJ OU SE NAO ACHAR NADA RETORNA NULL
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObejectNotFoundException("Objeto não encontrado ! Id " + id
+        + ", Tipo: " + Usuario.class.getName()));
     }
+
+
+    public List<Usuario> findAll() {
+        return repository.findAll();
+    }
+
+    public Usuario update(Integer id, Usuario obj){
+        Usuario newObj = findById(id);
+        newObj.setNome(obj.getNome());
+        newObj.setLogin(obj.getLogin());
+        newObj.setSenha(obj.getSenha());
+        return repository.save(newObj);
+    }
+
 
 
 }

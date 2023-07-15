@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "Usuarios")
 public class Usuario implements Serializable {
     //pega uma sequencia armazenada em rede
     private static final long serialVesionUID = 1L;
@@ -23,13 +23,13 @@ public class Usuario implements Serializable {
 
 
     @NotEmpty(message = "Campo NOME é obrigatório")
-    @Length(min = 3, max = 100, message = "O NOME deve ter entr 3 e 100 caracteres")
+    @Length(min = 3, max = 100, message = "O NOME deve ter entre 3 e 100 caracteres")
     private String nome;
     @NotEmpty(message = "Campo LOGIN é obrigatório")
-    @Length(min = 3, max = 100, message = "O LOGIN deve ter entr 3 e 100 caracteres")
+    @Length(min = 3, max = 100, message = "O LOGIN deve ter entre 3 e 100 caracteres")
     private String login;
     @NotEmpty(message = "Campo SENHA é obrigatório")
-    @Length(min = 3, max = 100, message = "A SENHA deve ter entr 3 e 100 caracteres")
+    @Length(min = 3, max = 100, message = "A SENHA deve ter entre 3 e 100 caracteres")
     private String senha;
 
     public Usuario() {
